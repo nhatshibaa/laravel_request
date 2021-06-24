@@ -9,8 +9,13 @@
 </head>
 <body>
     <h2 style="align-content: center">Đây là 1 web rất xịn xò con bò!</h2>
+    <h3>Full name: {{$name}}</h3>
+    <h3>Email: {{$email}}</h3>
+    <h3>Phone: {{$phone}}</h3>
+    <h3>Address: {{$address}}</h3>
+    <h3>Identity Card: {{$idCard}}</h3>
 </body>
 <script>
-    alert('Register Success!Welcome to my page {{$welcome}}')
+    alert('Register Success! Welcome to my page {{$name}}')
 </script>
 </html>
