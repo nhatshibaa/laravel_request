@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,10 @@ Route::get('/user/login', [UserController::class, 'login']);
 Route::get('/user/detail{id}', [UserController::class, 'getUserDetail']);
 Route::get('/user/register', [UserController::class, 'register']);
 Route::post('/user/register', [UserController::class, 'processRegister']);
+
+Route::get('/layout', [LayoutController::class, 'layout']);
+Route::get('/layout/index', [LayoutController::class, 'index']);
+Route::get('/layout/list', [LayoutController::class, 'list']);
+Route::get('/layout/form', [LayoutController::class, 'form']);
+Route::get('/layout/calendar', [LayoutController::class, 'calendar']);
+Route::get('/layout/ui', [LayoutController::class, 'ui']);

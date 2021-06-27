@@ -91,7 +91,7 @@
 - Có cơ chế để xây dựng layout cho project.
 
 ###Xử lý dữ liệu client gửi lên trong controller, các phương pháp lấy dữ liệu gửi lên.
-- Lấy dữ liệu gửi lên trong form thì cần lưu ý.
+- Lấy dữ liệu gửi lên trong **form** thì cần lưu ý.
     - Form muốn gửi lên được phải `@csrf`.
     - Để lấy dữ liệu gửi lên từ form. Trong callback function sử dụng thêm tham số
       `Request` (`Illuminate\Http\Request`) dùng hàm get để lấy ra tham số theo tên.
@@ -101,11 +101,11 @@
             $lastName = $request->get('lastname');
             $country = $request->get('country');
           }
-- Lấy dữ liệu trong query string (tham số gửi trên url). Trong callback function sử dụng thêm tham số
+- Lấy dữ liệu trong **query string** (tham số gửi trên url). Trong callback function sử dụng thêm tham số
   `Request` (`Illuminate\Http\Request`) dùng hàm get để lấy ra tham số theo tên giống như lấy ra ở form.
     - Ví dụ về query string: `http://localhost:8000/users/login?name=hung&email=hung@gmail&password=123&gender=1`
     - Tham số đầu tiên bắt đầu bằng dấu `?`, từ tham số thứ 2 thì là `&`.
-- Gửi dữ liệu thông qua `path variable`, khi khai báo link thì thêm dấu `{ten-bien}`. Ví dụ.
+- Gửi dữ liệu thông qua **path variable**, khi khai báo link thì thêm dấu `{ten-bien}`. Ví dụ.
   `/users/detail/{id}`, callback function để làm việc với biến này thì khai báo như sau (tham số
   truyền vào của callback trùng tên với tên biến.)
 

@@ -6,24 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('../../../public/register/bootstrap/css/bootstrap.min.css')}}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('register/bootstrap/css/bootstrap.min.css')}}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('../../../public/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('../../../public/fonts/iconic/css/material-design-iconic-font.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('../../../public/register/animate/animate.css')}}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('register/animate/animate.css')}}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('../../../public/register/css-hamburgers/hamburgers.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('register/css-hamburgers/hamburgers.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('../../../public/register/animsition/css/animsition.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('register/animsition/css/animsition.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('../../../public/register/select2/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('register/select2/select2.min.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('../../../public/register/daterangepicker/daterangepicker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('register/daterangepicker/daterangepicker.css')}}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{asset('../../css/register/util.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('../../css/register/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('css/register/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{\Illuminate\Support\Facades\URL::asset('css/register/main.css')}}">
     <!--===============================================================================================-->
     <script src="https://kit.fontawesome.com/8b03973819.js" crossorigin="anonymous"></script>
 </head>
@@ -79,21 +79,21 @@
 <div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
-<script src="{{asset('../../../public/register/jquery/jquery-3.2.1.min.js')}}}"></script>
+<script src="{{\Illuminate\Support\Facades\URL::asset('register/jquery/jquery-3.2.1.min.js')}}}"></script>
 <!--===============================================================================================-->
-<script src="{{asset('../../../public/register/animsition/js/animsition.min.js')}}"></script>
+<script src="{{\Illuminate\Support\Facades\URL::asset('register/animsition/js/animsition.min.js')}}"></script>
 <!--===============================================================================================-->
-<script src="{{asset('../../../public/register/bootstrap/js/popper.js')}}"></script>
-<script src="{{asset('../../../public/register/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('register/bootstrap/js/popper.js')}}"></script>
+<script src="{{asset('register/bootstrap/js/bootstrap.min.js')}}"></script>
 <!--===============================================================================================-->
-<script src="{{asset('../../../public/register/select2/select2.min.js')}}"></script>
+<script src="{{asset('register/select2/select2.min.js')}}"></script>
 <!--===============================================================================================-->
-<script src="{{asset('../../../public/register/daterangepicker/moment.min.js')}}"></script>
-<script src="{{asset('../../../public/register/daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('register/daterangepicker/moment.min.js')}}"></script>
+<script src="{{asset('register/daterangepicker/daterangepicker.js')}}"></script>
 <!--===============================================================================================-->
-<script src="{{asset('../../../public/register/countdowntime/countdowntime.js')}}"></script>
+<script src="{{asset('register/countdowntime/countdowntime.js')}}"></script>
 <!--===============================================================================================-->
-<script src="{{asset('../../../public/js/register/main.js')}}"></script>
+<script src="{{asset('js/register/main.js')}}"></script>
 
 </body>
 </html>
