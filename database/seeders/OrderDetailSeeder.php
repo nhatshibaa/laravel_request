@@ -15,6 +15,13 @@ class OrderDetailSeeder extends Seeder
     public function run()
     {
         //
-
+        for ($i = 0; $i < 30; $i++){
+            OrderDetails::create([
+                'OrderID' => random_int(1,10),
+                'ProductID' =>  random_int(1,10),
+                'Quantity' => random_int(1, 100),
+                'Amount' => random_int(10000, 500000)
+            ]);
+        }
     }
 }
