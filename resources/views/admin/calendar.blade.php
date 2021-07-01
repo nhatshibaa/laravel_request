@@ -1,5 +1,11 @@
 @extends('admin.layout')
 
+@section('page-css')
+    <link rel="stylesheet" href="/assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
+    <link rel="stylesheet" href="/assets/vendor/fullcalendar/fullcalendar.css" />
+    <link rel="stylesheet" href="/assets/vendor/fullcalendar/fullcalendar.print.css" media="print" />
+@endsection
+
 @section('header-content')
     <header class="page-header">
         <h2>Calendar</h2>
@@ -14,8 +20,6 @@
                 <li><span>Pages</span></li>
                 <li><span>Calendar</span></li>
             </ol>
-
-            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
         </div>
     </header>
 @endsection
@@ -53,4 +57,13 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('page-js')
+    <script src="/assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+    <script src="/assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
+    <script src="/assets/vendor/fullcalendar/lib/moment.min.js"></script>
+    <script src="/assets/vendor/fullcalendar/fullcalendar.js"></script>
+
+    <script src="/assets/javascripts/pages/examples.calendar.js"></script>
 @endsection

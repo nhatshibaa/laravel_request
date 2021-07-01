@@ -2478,7 +2478,7 @@ ul.nav-main li .nav-children .nav-children .nav-children li a {
 	font-size: 0;
 	line-height: 50px;
 	margin: 0;
-	padding: 0;
+	padding-right: 20px;
 }
 
 .page-header .breadcrumbs li {

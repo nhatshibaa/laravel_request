@@ -114,3 +114,164 @@
         }
 
 ###Gửi dữ liệu từ controller ra view và cách hiển thị variable ngoài view.
+- Các function trong controller khi return view, ngoài tên view sẽ kèm theo biến.
+    - `return view('ten-view'')->with('ten-bien-duoc-su-dung-ngoai-view', 'gia-tri-cua-bien')`.
+    - `return view('ten-view', ['ten-bien-1'=> 'gia-tri-bien-1', 'ten-bien-2'=>'gia-tri-bien-2'])`
+- Ở ngoài view thì có thể dùng `{{$ten-bien-1}} {{$ten-bien-2}}` để hiển thị dữ liệu của biến.
+
+###Hiển thị dữ liệu ngoài view. Những cấu trúc thường gặp.
+- Tham khảo: https://laravel.com/docs/8.x/blade#if-statements
+- `{{$tenbien}}` hiển thị dữ liệu của biến hoặc biểu thức.
+    - `{{ 10 + 20}}` cho kết quả bằng 30.
+- Câu lệnh điều kiện.
+
+      @if($count > 1)
+          <p>Hello</p>
+      @endif
+
+  hoặc sử dụng câu lệnh if với nhiều case
+
+      @if (count($records) === 1)
+          I have one record!
+      @elseif (count($records) > 1)
+          I have multiple records!
+      @else
+          I don't have any records!
+      @endif
+
+- Sử dụng vòng lặp for i.
+
+      @for($i = 0; $i < count($items); $i++)
+          <p>{{$items[$i]}}</p>
+      @endfor
+
+- Sử dụng vòng lặp foreach.
+
+      @foreach($users as $user)
+          <p>{{$user}}</p>
+      @endfor
+
+- Sử dụng switch case.
+
+      @switch($i)
+          @case(1)
+              <p>Number 1</p>
+              @break
+          @case(2)
+              <p>Number 2</p>
+              @break
+          @case(3)
+              <p>Number 3</p>
+              @break
+          @default
+              <p>Default</p>
+              break
+      @endswitch
+###Tạo layout với template blade.
+- Bộ khung chung làm layout `layout.blade.php`, chọn các phần để @yield, là nơi khác biệt giữa các trang con.
+    - `@yield('content')` nội dung chính cho mỗi trang.
+    - `@yield('title')` title cho mỗi trang.
+    - `@yield('script')` dùng cho những trường hợp mà có file js riêng.
+    - `@yield('css')` dùng cho những trường hợp có css riêng.
+- Tại các trang riêng cần lưu ý.
+    - `@extends('layout')` dùng để khai báo layout dùng chung của trang. Cần lưu ý đường dẫn vào file `layout.blade.php`
+      Cần trỏ đường dẫn đầy đủ kèm dấu `.` từ thư mục `views` vào bên trong file.
+    - `@section('content') @endsection` tương ứng với từ khoá `@yield('content')` tạo ra các phần riêng của trang.
+- Nhúng tài nguyên vào trang.
+    - Tất cả phần tài nguyên gồm: `css, js, image` nên cho vào thư mục public
+    - Liên kết đến các file này sử dụng cú pháp: `{{URL::asset('js/index.js')}}`
+        - Lưu ý là đường link sẽ tính bắt đầu từ public.
+        - Không cần import namespace đầy đủ của lớp URL.
+        - Khi copy template về thì phải sửa lại phần lớn link này.
+###Làm việc với database.
+- Mở xampp, mở mysql và apache.
+- Cấu hình kết nối dabase trong file `.env`
+
+      DB_CONNECTION=mysql
+      DB_HOST=127.0.0.1
+      DB_PORT=3306
+      DB_DATABASE=t2009a_hello_laravel
+      DB_USERNAME=root
+      DB_PASSWORD=
+
+- Tạo model để mapping với các bảng trong database.
+  Câu lệnh tạo model kèm file migration (trong thư mục `database/migrations`): `php artisan make:model Product --migration`
+- Thực hiện udpate vào database. `php artisan migrate` `php artisan migrate:refresh`.
+    - Lỗi `key too long` thì vào file `app/Providers/AppServiceProvider.php` trong hàm `boot`,
+      thêm dòng `Schema::defaultStringLength(191);`, cần bổ sung `use Illuminate\Support\Facades\Schema;` đầu file.
+    - Lỗi báo bảng tồn tại, nếu đang trong `quá trình phát triển` thì có thể fix đơn giản tất cả bảng
+      trong database và chạy lại lệnh.
+    - Khi có thay đổi tên trường, thêm trường hoặc kiểu dữ liệu của trường thì sau khi sửa trong
+      file migrate chạy `php artisan migrate:refresh` hoặc `php artisan migrate:fresh`
+
+###Migration dữ liệu vào database.
+- Là quá trình khai báo và update kiểu dữ liệu các bảng từ code sang database.
+- `$table->increments('id');` tạo trường id tự tăng.
+- `$table->integer('price');` tạo trường price kiểu int.
+- `$table->string('name');` tạo trường name kiểu string.
+- `$table->integer('status')->default(1);` tạo trường status kiểu int có giá trị default 1.
+- `$table->integer('categoryId')->unsigned();` khai báo trường categoryId kiểu int nhưng phải là số dương.
+  `$table->foreign('categoryId')->references('id')->on('categories');`
+  tạo ra một khoá ngoại trên bảng tại trường `categoryId` và có khoá chính là trường tên là `id`
+  nhưng trên bảng `categories`
+  thường đi thành một cặp để khai báo khoá ngoại.
+- `$table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));` tạo trường `created_at` kiểu
+  timestamp và lấy giá trị mặc định thời gian hiện tại.
+- Khi tạo khoá ngoại, ví dụ từ bảng `products` sang bảng `categories` thì phải tạo bảng
+  `categories`, trong trường hợp sinh ra migrate của bảng product trước thì sửa nội dung ngày tháng
+  để bảng `categories` có thể được tạo trước (trick) `2021_06_28_083424_create_products_table.php` sang
+  `2021_06_28_083400_create_products_table.php`
+
+###Seeder trong laravel.
+- Là quá trình tạo ra dữ liệu mẫu, phù hợp, đầy đủ cho project.
+- Đảm bảo quá trình demo sẽ thể hiện sự chuyên nghiệp của sản phẩm cũng như
+  có thể demo được những chức năng khó, đòi hỏi dữ liệu nhiều.
+- Dễ dàng backup và khởi tạo lại dữ liệu, phục vụ quá trình test.
+- Lệnh tạo `php artisan make:seeder TenSeeder`, tạo ra một file tên `TenSeeder` trong thư mục
+  `database/seeders`.
+- `\Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 0');` thực hiện trước khi
+  chạy seeder để đảm bảo quá trình insert update, không bị ảnh hưởng bởi khoái ngoại.
+- `\Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 1');`  mở lại quá trình check.
+- `\Illuminate\Support\Facades\DB::table('categories')->truncate();` thực hiện xoá hoàn toàn dữ liệu trong bảng
+  nhưng không xoá bảng.
+- Quá trình insert theo mảng. Có thể cho id, kể cả tự tăng. Nên insert thêm ngày tháng để phục vụ test.
+
+      \Illuminate\Support\Facades\DB::table('categories')->insert([
+          [
+              'name' => 'Lipstick',
+              'images' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR81NLdW06WdMGkj160-JKrFThFXCYqSyShd85PTd4uRDpEnmHw',
+              'description' => 'Lipstick is a cosmetic product containing pigments, oils-v, waxes, and emollients that apply color, texture, and protection to the lips.'
+          ],
+          [
+              'name' => 'Lip Gloss',
+              'images' => 'https://media.loveitopcdn.com/6458/kcfinder/upload//images/cach-lam-son-bong-handmade-cho%20moi-cang-mong.jpg',
+              'description' => 'Lip gloss is a product used primarily to give lips a glossy lustre, and sometimes to add a subtle color. It is distributed as a liquid or a soft solid (not to be confused with lip balm, which generally has medical or soothing purposes) or lipstick, which generally is a solid, cream like substance that gives off a more pigmented color',
+          ]
+      ]);
+- Tổng kết, file seeder sẽ gần như sau.
+
+      \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+      \Illuminate\Support\Facades\DB::table('categories')->truncate();
+      \Illuminate\Support\Facades\DB::table('categories')->insert([
+          [
+              'name' => 'Lipstick',
+              'images' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR81NLdW06WdMGkj160-JKrFThFXCYqSyShd85PTd4uRDpEnmHw',
+              'description' => 'Lipstick is a cosmetic product containing pigments, oils-v, waxes, and emollients that apply color, texture, and protection to the lips.'
+          ],
+          [
+              'name' => 'Lip Gloss',
+              'images' => 'https://media.loveitopcdn.com/6458/kcfinder/upload//images/cach-lam-son-bong-handmade-cho%20moi-cang-mong.jpg',
+              'description' => 'Lip gloss is a product used primarily to give lips a glossy lustre, and sometimes to add a subtle color. It is distributed as a liquid or a soft solid (not to be confused with lip balm, which generally has medical or soothing purposes) or lipstick, which generally is a solid, cream like substance that gives off a more pigmented color',
+          ]
+      ]);
+      \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+- Chạy dbseed bằng lệnh:
+
+      php artisan db:seed
+  hoặc
+
+      php artisan db:seed --class=UserSeeder
+  hoặc
+
+      php artisan migrate:fresh --seed
+

@@ -19,9 +19,8 @@ Route::get('/user/detail{id}', [UserController::class, 'getUserDetail']);
 Route::get('/user/register', [UserController::class, 'register']);
 Route::post('/user/register', [UserController::class, 'processRegister']);
 
-Route::get('/layout', [LayoutController::class, 'layout']);
-Route::get('/layout/index', [LayoutController::class, 'index']);
-Route::get('/layout/list', [LayoutController::class, 'list']);
-Route::get('/layout/form', [LayoutController::class, 'form']);
-Route::get('/layout/calendar', [LayoutController::class, 'calendar']);
-Route::get('/layout/ui', [LayoutController::class, 'ui']);
+Route::get('/admin', [LayoutController::class, 'index']);
+Route::get('/admin/list', [LayoutController::class, 'list']);
+Route::get('/admin/form', [LayoutController::class, 'form']);
+Route::get('/admin/calendar', [LayoutController::class, 'calendar']);
+Route::get('/admin/ui', [LayoutController::class, 'ui']);

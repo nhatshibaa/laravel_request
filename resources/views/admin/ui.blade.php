@@ -1,5 +1,9 @@
 @extends('admin.layout')
 
+@section('page-css')
+    <link rel="stylesheet" href="/assets/vendor/pnotify/pnotify.custom.css" />
+@endsection
+
 @section('header-content')
     <header class="page-header">
         <h2>Modals</h2>
@@ -15,7 +19,6 @@
                 <li><span>Modals</span></li>
             </ol>
 
-            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
         </div>
     </header>
 @endsection
@@ -946,4 +949,8 @@
             </section>
         </div>
     </div>
+@endsection
+
+@section('page-js')
+    <script src="/assets/vendor/pnotify/pnotify.custom.js"></script>
 @endsection
