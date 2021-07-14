@@ -178,34 +178,18 @@
                             </li>
                             <li class="nav-parent">
                                 <a>
-                                    <i class="fa fa-align-left" aria-hidden="true"></i>
-                                    <span>Menu Levels</span>
+                                    <i class="fas fa-box"></i>
+                                    <span>Product</span>
                                 </a>
                                 <ul class="nav nav-children">
                                     <li>
-                                        <a>First Level</a>
+                                        <a href="/admin/all-product">All Product</a>
                                     </li>
-                                    <li class="nav-parent">
-                                        <a>Second Level</a>
-                                        <ul class="nav nav-children">
-                                            <li class="nav-parent">
-                                                <a>Third Level</a>
-                                                <ul class="nav nav-children">
-                                                    <li>
-                                                        <a>Third Level Link #1</a>
-                                                    </li>
-                                                    <li>
-                                                        <a>Third Level Link #2</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a>Second Level Link #1</a>
-                                            </li>
-                                            <li>
-                                                <a>Second Level Link #2</a>
-                                            </li>
-                                        </ul>
+                                    <li>
+                                        <a href="/admin/edit-product">Edit Product</a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/list">List Product</a>
                                     </li>
                                 </ul>
                             </li>

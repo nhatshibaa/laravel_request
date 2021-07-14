@@ -42,7 +42,7 @@
                     <input class="input100" type="text" name="fullname" placeholder="Type your fullname">
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+                <div class="wrap-input100 validate-input m-b-23" data-validate="Email is required">
                     <span class="label-input100">Email</span>
                     <input class="input100" type="email" name="email" placeholder="Type your email">
                 </div>

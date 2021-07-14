@@ -17,7 +17,6 @@ class CreateProductsTable extends Migration
             $table->increments('Id');
             $table->string('Name');
             $table->double('Price');
-            $table->timestamps();
         });
     }
 

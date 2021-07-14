@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class LayoutController extends Controller
 {
     public function layout(){
-        return view('admin.layout');
+        return view('welcome');
     }
 
     public function index()
